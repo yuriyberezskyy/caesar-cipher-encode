@@ -25,14 +25,21 @@ def encrypt(text,shift):
       result += alphabet[shifted]
 
   print(result)
-    
 
-    ##HINT: How do you get the index of an item in a list:
-    #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
+def decrypt(text,shift):
+  result = ''
+  for char in text:
+    index = alphabet.index(char)
+    shifted = index - shift
+    if shifted < 0:
+      difference = len(alphabet) + shifted
+      result += alphabet[difference] 
+    else:
+      result += alphabet[shifted]
 
-    ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
-
-#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
+  print(result)
 
 if(direction == 'encode'):
   encrypt(text,shift)
+elif(direction == 'decode'):
+  decrypt(text,shift)
